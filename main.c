@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 #define N 100
@@ -11,6 +12,13 @@ void print_strings_DNIs(char string_DNIs[N][9+1]);
 void rand_strings_DNIs(char string_DNIs[N][9+1]);
 void rand_str_DNI(char str_DNI[9+1]);
 
+
+void rand_strs_DNI(char string_DNIs[N][9+1]) {
+    for (int i = 0; i < N; i++) {
+        rand_str_DNI(string_DNIs[i]);
+    }
+}
+
 void rand_str_DNI(char str_DNI[9+1]) {
     int digit = 0, dni_number = 0, rest = 0;
     char letra[] = "TRWAGMYFPDXBNJZSQVHLCKE";
@@ -20,13 +28,15 @@ void rand_str_DNI(char str_DNI[9+1]) {
     }
     dni_number = atoi(str_DNI);
     rest = dni_number % 23;
-    str_DNI[8] = '-';
-    str_DNI[9] = letra[rest];
+    str_DNI[8] = letra[rest];
+    str_DNI[9] = '\0';
+
 }
+
 int main(void)
 {
     srand(time(NULL));
     char string_DNIs[N][9+1];
-    rand_str_DNI(string_DNIs);
+    rand_strs_DNI(string_DNIs);
     return 0;
 }
