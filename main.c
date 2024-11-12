@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <conio.h>
 
 #define N 100
 
@@ -17,16 +18,43 @@ void buscar_substring(char _string_DNIs[N][9+1]) {
 }
 
 void buscar_letra(char _string_DNIs[N][9+1]) {
+    printf("\nLetra a buscar? ");
+    char letra;
+    letra = getch();
 
+
+    for (int i = 0; i < N; i++) {
+        if (_string_DNIs[i][8] == letra) {
+            printf("%s ", _string_DNIs[i]);
+        }
+    }
+}
+
+void print_strings_DNIs(char string_DNIs[N][9+1]) {
+    for (int i = 0; i < N; i++) {
+        printf(" %s", string_DNIs[i]);
+    }
+}
+
+
+void rand_strs_DNI(char string_DNIs[N][9+1]) {
+    for (int i = 0; i < N; i++) {
+        rand_str_DNI(string_DNIs[i]);
+    }
+    print_strings_DNIs(string_DNIs);
 }
 
 void print_menu() {
+
+    char string_DNIs[N][9+1];
+    rand_strs_DNI(string_DNIs);
+
     printf("\n1 buscar letra\n");
     printf("2 buscar substring\n");
     printf("0 END\n");
 
-    char menu, string_DNIs[N][9+1];
-    menu = getchar();
+    char menu;
+    menu = getch();
 
     do {
         if (menu == '1') {
@@ -37,18 +65,8 @@ void print_menu() {
     }while(menu == '0');
 }
 
-void print_strings_DNIs(char string_DNIs[N][9+1]) {
-    for (int i = 0; i < N; i++) {
-        printf(" %s", string_DNIs[i]);
-    }
-}
-void rand_strs_DNI(char string_DNIs[N][9+1]) {
-    for (int i = 0; i < N; i++) {
-        rand_str_DNI(string_DNIs[i]);
-    }
 
-    print_strings_DNIs(string_DNIs);
-}
+
 
 void rand_str_DNI(char str_DNI[9+1]) {
     int digit = 0, dni_number = 0, rest = 0;
@@ -61,14 +79,12 @@ void rand_str_DNI(char str_DNI[9+1]) {
     rest = dni_number % 23;
     str_DNI[8] = letra[rest];
     str_DNI[9] = '\0';
-
 }
 
 int main(void)
 {
     srand(time(NULL));
-    char string_DNIs[N][9+1];
-    rand_strs_DNI(string_DNIs);
+
     print_menu();
     return 0;
 }
