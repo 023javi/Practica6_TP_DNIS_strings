@@ -14,7 +14,14 @@ void rand_strings_DNIs(char string_DNIs[N][9+1]);
 void rand_str_DNI(char str_DNI[9+1]);
 
 void buscar_substring(char _string_DNIs[N][9+1]) {
-
+    printf("\nSubstring a buscar ? ");
+    char substring[9+1];
+    scanf("%s", substring);
+    for (int i = 0; i < N; i++) {
+        if(strstr(_string_DNIs[i], substring) != NULL) {
+            printf("> %s", _string_DNIs[i]);
+        }
+    }
 }
 
 void buscar_letra(char _string_DNIs[N][9+1]) {
@@ -22,10 +29,9 @@ void buscar_letra(char _string_DNIs[N][9+1]) {
     char letra;
     letra = getch();
 
-
     for (int i = 0; i < N; i++) {
         if (_string_DNIs[i][8] == letra) {
-            printf("%s ", _string_DNIs[i]);
+            printf("> %s ", _string_DNIs[i]);
         }
     }
 }
