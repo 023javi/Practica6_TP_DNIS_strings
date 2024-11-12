@@ -13,10 +13,17 @@ void rand_strings_DNIs(char string_DNIs[N][9+1]);
 void rand_str_DNI(char str_DNI[9+1]);
 
 
+void print_strings_DNIs(char string_DNIs[N][9+1]) {
+    for (int i = 0; i < N; i++) {
+        printf(" %s", string_DNIs[i]);
+    }
+}
 void rand_strs_DNI(char string_DNIs[N][9+1]) {
     for (int i = 0; i < N; i++) {
         rand_str_DNI(string_DNIs[i]);
     }
+
+    print_strings_DNIs(string_DNIs);
 }
 
 void rand_str_DNI(char str_DNI[9+1]) {
